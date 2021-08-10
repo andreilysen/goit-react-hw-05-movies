@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import PropTypes from "prop-types";
 
 import { getMoviesReview } from "../../servise/apiFeanch";
 
@@ -7,7 +8,9 @@ const MoviesReview = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
-    getMoviesReview(movieId).then(({ data }) => setReviews([...data.results]));
+    getMoviesReview(movieId)
+      .then(({ data }) => setReviews([...data.results]))
+      .catch((error) => console.log(`error`, error));
   }, [movieId]);
 
   return (
@@ -26,6 +29,10 @@ const MoviesReview = () => {
       )}
     </>
   );
+};
+
+MoviesReview.propTypes = {
+  movieId: PropTypes.number,
 };
 
 export default MoviesReview;

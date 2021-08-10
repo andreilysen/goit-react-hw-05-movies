@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Container from "./components/Container";
 
@@ -22,6 +22,7 @@ function App() {
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </Container>

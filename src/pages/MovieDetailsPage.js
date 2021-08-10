@@ -1,9 +1,13 @@
 import { Route } from "react-router";
-import { NavLink, useRouteMatch, useLocation } from "react-router-dom";
-
+import {
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { useParams } from "react-router";
+import PropTypes from "prop-types";
 
 import { getMovieById } from "../servise/apiFeanch";
 import MoviesCast from "../components/MoviesCast";
@@ -13,17 +17,26 @@ import styles from "./Pages.module.css";
 const MovieDetailsPage = () => {
   const match = useRouteMatch();
   const location = useLocation();
+  const history = useHistory();
   const [film, setFilm] = useState(null);
   const { movieId } = useParams();
+  console.log(`location`, location);
 
   useEffect(() => {
-    getMovieById(movieId).then(({ data }) => setFilm(data));
-  }, [movieId]);
+    getMovieById(movieId)
+      .then(({ data }) => setFilm(data))
+      .catch((error) => console.log(`error`, error));
+  }, [location, movieId]);
+
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? "/");
+  };
 
   return (
     <>
       {film && (
         <>
+          <button onClick={onGoBack}>Go back</button>
           <div className={styles.card}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
@@ -49,7 +62,10 @@ const MovieDetailsPage = () => {
               className={styles.link}
               activeClassName={styles.activeLink}
               exact
-              to={{ pathname: `${match.url}/cast`, state: { from: location } }}
+              to={{
+                pathname: `${match.url}/cast`,
+                state: { from: location },
+              }}
             >
               Cast
             </NavLink>
@@ -76,6 +92,10 @@ const MovieDetailsPage = () => {
       )}
     </>
   );
+};
+
+MovieDetailsPage.propTypes = {
+  movieId: PropTypes.number,
 };
 
 export default MovieDetailsPage;

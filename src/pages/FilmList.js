@@ -9,9 +9,9 @@ const FilmList = () => {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
   useEffect(() => {
-    getTrendingFilm(page).then(({ data }) =>
-      setFilms((prev) => [...prev, ...data.results])
-    );
+    getTrendingFilm(page)
+      .then(({ data }) => setFilms((prev) => [...prev, ...data.results]))
+      .catch((error) => console.log(`error`, error));
   }, [page]);
 
   const handleClick = (e) => {
