@@ -39,7 +39,7 @@ const Movies = () => {
     }
 
     getSearchMovie(searchUrl)
-      .then(({ data }) => setFilms((prev) => [...prev, ...data.results]))
+      .then(({ data }) => setFilms([...data.results]))
       .catch((error) => console.log(`error`, error));
   }, [searchUrl]);
 

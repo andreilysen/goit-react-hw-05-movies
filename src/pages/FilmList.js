@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { getTrendingFilm } from "../servise/apiFeanch";
 
 import styles from "./Pages.module.css";
 
 const FilmList = () => {
+  const location = useLocation();
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -24,7 +25,12 @@ const FilmList = () => {
         {films &&
           films.map((film) => (
             <li key={film.id} className={styles.item}>
-              <Link to={{ pathname: `/movies/${film.id}` }}>
+              <Link
+                to={{
+                  pathname: `/movies/${film.id}`,
+                  state: { from: location },
+                }}
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
                   alt={film.title}

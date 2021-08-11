@@ -64,7 +64,7 @@ const MovieDetailsPage = () => {
               exact
               to={{
                 pathname: `${match.url}/cast`,
-                state: { from: { ...location.state.from } },
+                state: { from: { ...location.state } },
               }}
             >
               Cast
@@ -75,7 +75,7 @@ const MovieDetailsPage = () => {
               exact
               to={{
                 pathname: `${match.url}/review`,
-                state: { from: location.state },
+                state: { from: { ...location.state } },
               }}
             >
               Review
