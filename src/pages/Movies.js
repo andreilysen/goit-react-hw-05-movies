@@ -7,25 +7,24 @@ import styles from "./Pages.module.css";
 
 const Movies = () => {
   const [query, setQuery] = useState("");
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [films, setFilms] = useState([]);
   const history = useHistory();
   const location = useLocation();
 
   const searchUrl = new URLSearchParams(location.search).get("query") ?? "";
   // console.log(`films`, films);
-  // console.log(`searchQuery`, searchQuery);
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (query === "") {
-    //   return;
-    // }
-    // setSearchQuery(query);
+    if (query === "") {
+      return;
+    }
+    setPage(1);
+    setFilms([]);
     history.push({
       ...location,
       search: `query=${query}`,
@@ -38,22 +37,14 @@ const Movies = () => {
       return;
     }
 
-    getSearchMovie(searchUrl)
-      .then(({ data }) => setFilms([...data.results]))
+    getSearchMovie(searchUrl, page)
+      .then(({ data }) => setFilms((prev) => [...prev, ...data.results]))
       .catch((error) => console.log(`error`, error));
-  }, [searchUrl]);
+  }, [searchUrl, page]);
 
-  // useEffect(() => {
-  //   if (searchUrl === "") {
-  //     return;
-  //   }
-
-  //   setSearchQuery(searchUrl);
-  // }, [searchUrl]);
-
-  // const handleClick = (e) => {
-  //   setPage((prev) => prev + 1);
-  // };
+  const handleClick = (e) => {
+    setPage((prev) => prev + 1);
+  };
 
   return (
     <>
@@ -84,9 +75,9 @@ const Movies = () => {
       )}
       {films.length > 0 && (
         <div className={styles.loadButton}>
-          {/* <button className={styles.button} onClick={handleClick}>
+          <button className={styles.button} onClick={handleClick}>
             Load more
-          </button> */}
+          </button>
         </div>
       )}
     </>
