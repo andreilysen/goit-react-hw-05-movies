@@ -30,7 +30,7 @@ const Movies = () => {
       ...location,
       search: `query=${query}`,
     });
-    console.log(`location`, location);
+    // console.log(`location`, location);
   };
 
   useEffect(() => {

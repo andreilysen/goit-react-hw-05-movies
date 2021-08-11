@@ -20,7 +20,7 @@ const MovieDetailsPage = () => {
   const history = useHistory();
   const [film, setFilm] = useState(null);
   const { movieId } = useParams();
-  console.log(`location`, location);
+  // console.log(`location`, location);
 
   useEffect(() => {
     getMovieById(movieId)
