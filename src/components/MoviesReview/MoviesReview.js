@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import { getMoviesReview } from "../../servise/apiFeanch";
 
@@ -31,8 +31,8 @@ const MoviesReview = () => {
   );
 };
 
-MoviesReview.propTypes = {
-  movieId: PropTypes.number,
-};
+// MoviesReview.propTypes = {
+//   movieId: PropTypes.number,
+// };
 
 export default MoviesReview;

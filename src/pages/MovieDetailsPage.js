@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import { getMovieById } from "../servise/apiFeanch";
 import MoviesCast from "../components/MoviesCast";
@@ -94,8 +94,8 @@ const MovieDetailsPage = () => {
   );
 };
 
-MovieDetailsPage.propTypes = {
-  movieId: PropTypes.number,
-};
+// MovieDetailsPage.propTypes = {
+//   movieId: PropTypes.number,
+// };
 
 export default MovieDetailsPage;
