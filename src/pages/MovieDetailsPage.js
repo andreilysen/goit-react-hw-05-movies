@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 // import PropTypes from "prop-types";
 
-import { getMovieById } from "../servise/apiFeanch";
+import { getMovieById } from "../service/apiFetch";
 import MoviesCast from "../components/MoviesCast";
 import MoviesReview from "../components/MoviesReview";
 import styles from "./Pages.module.css";

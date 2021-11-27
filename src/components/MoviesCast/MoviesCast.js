@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useParams } from "react-router";
 
-import { getMovieCredits } from "../../servise/apiFeanch";
+import { getMovieCredits } from "../../service/apiFetch";
 import styles from "./MoviesCast.module.css";
 
 const MoviesCast = () => {

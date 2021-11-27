@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getSearchMovie } from "../servise/apiFeanch";
+import { getSearchMovie } from "../service/apiFetch";
 
 import styles from "./Pages.module.css";
 

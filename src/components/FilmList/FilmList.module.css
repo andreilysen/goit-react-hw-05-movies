@@ -1,0 +1,39 @@
+.item {
+  margin-right: 30px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: rgb(206, 203, 203);
+  border-radius: 10px;
+}
+
+.item:hover {
+  transform: scale(1.03);
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.image {
+  border-radius: 10px;
+}
+
+.textContainer {
+  padding: 0 5px;
+  padding-bottom: 5px;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-around; */
+}
+
+.textContainer p {
+  margin: 0;
+}
+
+.textTitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+}

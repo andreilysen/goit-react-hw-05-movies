@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 // import PropTypes from "prop-types";
 
-import { getMoviesReview } from "../../servise/apiFeanch";
+import { getMoviesReview } from "../../service/apiFetch";
 
 const MoviesReview = () => {
   const [reviews, setReviews] = useState([]);
