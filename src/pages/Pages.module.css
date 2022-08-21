@@ -57,6 +57,7 @@
 
 .card {
   display: flex;
+  margin-top: 20px;
 }
 
 .cardText {
@@ -83,4 +84,8 @@
 
 .activeLink {
   color: #2196f3;
+}
+
+.release {
+  font-weight: normal;
 }

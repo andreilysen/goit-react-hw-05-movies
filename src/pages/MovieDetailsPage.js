@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-// import PropTypes from "prop-types";
 
 import { getMovieById } from "../service/apiFetch";
 import MoviesCast from "../components/MoviesCast";
 import MoviesReview from "../components/MoviesReview";
+import imgTemp from "../image/imgTemp500.jpg";
 import styles from "./Pages.module.css";
 
 const MovieDetailsPage = () => {
@@ -20,7 +20,6 @@ const MovieDetailsPage = () => {
   const history = useHistory();
   const [film, setFilm] = useState(null);
   const { movieId } = useParams();
-  // console.log(`location`, location);
 
   useEffect(() => {
     getMovieById(movieId)
@@ -31,22 +30,26 @@ const MovieDetailsPage = () => {
   const onGoBack = () => {
     history.push(location?.state?.from ?? "/");
   };
+  const releaseDate = film?.release_date ? film.release_date : "No date";
+  const poster = film?.poster_path
+    ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
+    : `${imgTemp}`;
 
   return (
     <>
       {film && (
         <>
-          <button onClick={onGoBack}>Go back</button>
+          <button onClick={onGoBack} className={styles.button}>
+            Go back
+          </button>
           <div className={styles.card}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
-              alt={film.title}
-            />
+            <img src={poster} alt={film.title} />
             <div className={styles.cardText}>
-              <h3>
-                <span>{film.title}</span>
-                <span>{film.release_date}</span>
-              </h3>
+              <h2>{film.title} </h2>
+              <h4>
+                Release date:{" "}
+                <span className={styles.release}>{releaseDate}</span>
+              </h4>
               <h3>Overview</h3>
               <p>{film.overview}</p>
               <h3>Genres:</h3>
@@ -93,9 +96,5 @@ const MovieDetailsPage = () => {
     </>
   );
 };
-
-// MovieDetailsPage.propTypes = {
-//   movieId: PropTypes.number,
-// };
 
 export default MovieDetailsPage;

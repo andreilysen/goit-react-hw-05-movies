@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Header from "./components/Header";
-import Container from "./components/Container";
+import Header from "../Header";
+import Container from "../Container";
 
-const FilmPage = lazy(() => import("./pages/FilmPage"));
-const Movies = lazy(() => import("./pages/Movies"));
-const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
+const FilmPage = lazy(() => import("../../pages/FilmPage"));
+const Movies = lazy(() => import("../../pages/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("../../pages/MovieDetailsPage"));
 
 function App() {
   return (

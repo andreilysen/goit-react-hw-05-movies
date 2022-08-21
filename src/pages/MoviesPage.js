@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import FilmList from "../components/FilmList";
 import { getSearchMovie } from "../service/apiFetch";
 
 import styles from "./Pages.module.css";
@@ -51,28 +51,9 @@ const Movies = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input className={styles.input} value={query} onChange={handleChange} />
       </form>
-
-      {films && (
-        <ul className={styles.list}>
-          {films.map((film) => (
-            <li key={film.id} className={styles.item}>
-              <Link
-                to={{
-                  pathname: `/movies/${film.id}`,
-                  state: { from: location },
-                }}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
-                  alt={film.title}
-                />
-                <h2 className={styles.textTitle}>{film.title}</h2>
-                <p>{film.release_date}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className={styles.list}>
+        <FilmList films={films} />
+      </ul>
       {films.length > 0 && (
         <div className={styles.loadButton}>
           <button className={styles.button} onClick={handleClick}>
