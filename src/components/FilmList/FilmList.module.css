@@ -2,7 +2,7 @@
   margin-right: 30px;
   margin-bottom: 20px;
   list-style: none;
-  background-color: rgb(206, 203, 203);
+  background-color: darkcyan;
   border-radius: 10px;
 }
 
@@ -24,6 +24,7 @@
 .textContainer {
   padding: 0 5px;
   padding-bottom: 5px;
+  color: aliceblue;
   /* display: flex;
   align-items: center;
   justify-content: space-around; */

@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+
+import logo from "../../image/logo.jpg";
+import searchIcon from "../../image/searchIcon.png";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -10,14 +13,18 @@ const Navigation = () => {
         exact
         to="/"
       >
-        Home
+        <div>
+          <img src={logo} alt="" className={styles.logo} />
+        </div>
       </NavLink>
       <NavLink
         className={styles.link}
         activeClassName={styles.activeLink}
         to="/movies"
       >
-        Movies
+        <div>
+          <img src={searchIcon} alt="" className={styles.logo} />
+        </div>
       </NavLink>
     </header>
   );
