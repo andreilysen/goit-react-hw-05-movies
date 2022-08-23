@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "../Header";
 import Container from "../Container";
+import Loader from "../Loader";
 
 const FilmPage = lazy(() => import("../../pages/FilmPage"));
 const Movies = lazy(() => import("../../pages/MoviesPage"));
@@ -11,7 +12,7 @@ function App() {
   return (
     <Container>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Switch>
           <Route path="/" exact>
             <FilmPage />

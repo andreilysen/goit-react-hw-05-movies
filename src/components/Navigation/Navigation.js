@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import logo from "../../image/logo.jpg";
+import logo from "../../image/logo.png";
 import searchIcon from "../../image/searchIcon.png";
 import styles from "./Navigation.module.css";
 
