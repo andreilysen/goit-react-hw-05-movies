@@ -11,6 +11,8 @@ import { useParams } from "react-router";
 import { getMovieById } from "../service/apiFetch";
 import MoviesCast from "../components/MoviesCast";
 import MoviesReview from "../components/MoviesReview";
+import Button from "../components/Button";
+
 import imgTemp from "../image/imgTemp500.jpg";
 import styles from "./Pages.module.css";
 
